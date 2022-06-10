@@ -1,3 +1,5 @@
+// https://www.codewars.com/kata/5cba04533e6dce000eaf6126
+
 function bloodMoon(r){
   const ED2 = Math.pow(r, 2) / 2;
   const sector = Math.PI * ED2 / 4;
