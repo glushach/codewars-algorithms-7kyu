@@ -1,36 +1,23 @@
 // https://www.codewars.com/kata/61c78b57ee4be50035d28d42
-function mergeStrings(first, second){
-  console.log(first, second)
-
-  if (first === second) return first;
-  const secondLength = second.length;
-
-
-  let tail;
-
-  for (let i = 0; i < second.length; i++) {
-    if ( first.includes(second.slice(0, i)) ) {
-      tail = second.slice(0, i);
+/*
+  endsWith() позволяет определить, заканчивается ли строка символами указанными в скобках,
+  возвращая, соответственно, true или false
+*/
+const mergeStrings = (a, b) => {
+  for (let i = b.length; i > 0; i--) {
+    if (a.endsWith(b.slice(0, i))) { // уменьшает строку на 1 символ с конца, где length больше на 1 последнего индекса
+      return a + b.slice(i);
     }
   }
-
-
-  const firstLenght = first.length;
-  const tailLenght = tail.length;
-
-  let ENDFIRST = first.slice(firstLenght - tailLenght)
-
-  console.log(ENDFIRST)
-
-  if (ENDFIRST[0] === tail[0]) {
-    second = second.slice(tailLenght)
-  } if (ENDFIRST[0] ===  'a' && ENDFIRST[1] === 'a') {
-    console.log('YES')
-  }
-
-  return first + second;
+  return a + b;
 }
 
+console.log(mergeStrings("abcde", "cdefgh")) // abcdefgh
+console.log(mergeStrings("abaab", "aabab"))  // abaabab
+console.log(mergeStrings("abc", "def"))      // abcdef
+console.log(mergeStrings("abc", "abc"))      // abc
+
+// node "Merge overlapping strings"
 
 
 // РЕШЕНИЕ ДРУГИХ ОЧЕНЬ ТЯЖЕЛОЕ:
